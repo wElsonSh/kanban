@@ -10,50 +10,90 @@
 
 <body>
     <div class="wrapper">
-        <aside class="routing_container">
-            <div class="tools">
-                <h4>TOOLS</h4>
-                <ul class="tools_list">
-                    <li class="tools_list_item">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <p>Search</p>
-                    </li>
-                    <li class="tools_list_item">
-                        <i class="fa-solid fa-list-check"></i>
-                        <p>Desks</p>
-                    </li>
-                    <li class="tools_list_item">
-                        <i class="fa-solid fa-circle"></i>
-                        <p>Tool</p>
-                    </li>
-                    <li class="tools_list_item">
-                        <i class="fa-solid fa-circle"></i>
-                        <p>Tool</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="desks_routing">
-                <h4>DESKS</h4>
-                <ul class="desks_routing_list">
-                    <li class="desks_routing_list_item">
-                        <i class="fa-solid fa-folder folder_icon"></i>
-                        <p>Desk_name</p>
-                    </li>
-                    <li class="desks_routing_list_item">
-                        <i class="fa-solid fa-folder-open folder_icon"></i>
-                        <p>Desk_name</p>
-                    </li>
-                    <li class="desks_routing_list_item">
-                        <i class="fa-solid fa-folder folder_icon"></i>
-                        <p>Desk_name</p>
-                    </li>
-                </ul>
+        <aside class="routing">
+            <div class="routing_container">
+                <div class="tools">
+                    <h4>TOOLS</h4>
+                    <ul class="tools_list">
+                        <li class="tools_list_item">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <p><a href="#/search">Search</a></p>
+                        </li>
+                        <li class="tools_list_item">
+                            <i class="fa-solid fa-list-check"></i>
+                            <p><a href="/">Desks</a></p>
+                        </li>
+                        <li class="tools_list_item">
+                            <i class="fa-solid fa-circle"></i>
+                            <p>Tool</p>
+                        </li>
+                        <li class="tools_list_item">
+                            <i class="fa-solid fa-circle"></i>
+                            <p>Tool</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="desks_routing">
+                    <h4>DESKS</h4>
+                    <ul class="desks_routing_list">
+                        <li class="desks_routing_list_item add_desk">
+                            <i class="fa-solid fa-plus"></i>
+                            <p>Add desk</p>
+                        </li>
+                        <li class="desks_routing_list_item">
+                            <i class="fa-solid fa-folder folder_icon"></i>
+                            <p>Desk_name</p>
+                        </li>
+                        <li class="desks_routing_list_item">
+                            <i class="fa-solid fa-folder-open folder_icon"></i>
+                            <p>Desk_name</p>
+                        </li>
+                        <li class="desks_routing_list_item">
+                            <i class="fa-solid fa-folder folder_icon"></i>
+                            <p>Desk_name</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </aside>
-        <main class="desk"></main>
+        <main class="desk">
+            <div class="desk_container" id='desk_container'>
+                <header class="desk_header">
+                    <div class="desk_header_container">
+                        <button class="desk_header_colums_creator_btn">
+                            <p>Create new column</p>
+                        </button>
+                    </div>
+                </header>
+                <div class="desk_columns_list_container" id='desk_columns_list_container'>
+                    <ul class="desk_columns_list">
+                        <li class="desk_columns_list_item">
+                            <span class="desk_columns_list_item_header">
+                                <h1>Column name</h1>
+                            </span>
+                            <span class="desk_columns_list_item_tegs">
+                                <ul class="tegs_list">
+                                    <li class="tegs_list_item">
+                                        <p>#teg</p>
+                                    </li>
+                                    <li class="tegs_list_item">
+                                        <p>#teg</p>
+                                    </li>
+                                    <li class="tegs_list_item">
+                                        <p>#teg</p>
+                                    </li>
+
+                                </ul>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script src="https://kit.fontawesome.com/2e9aa7e3cb.js" crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

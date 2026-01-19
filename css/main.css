@@ -39,32 +39,42 @@ li {
   align-items: center;
 }
 
-.routing_container {
+.routing {
   width: 15%;
   height: 100%;
-  background-color: #151515;
-  padding: 1rem;
+  background-color: #111;
+  padding: 0.5rem;
   box-sizing: border-box;
+}
+.routing .routing_container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-color: #191919;
+  box-shadow: 0 0 10px #000;
 }
-.routing_container .tools,
-.routing_container .desks_routing {
+.routing .tools,
+.routing .desks_routing {
   width: 100%;
   min-height: 15%;
   background-color: transparent;
 }
-.routing_container .tools h4,
-.routing_container .desks_routing h4 {
+.routing .tools h4,
+.routing .desks_routing h4 {
   font-family: "Oswald", sans-serif;
-  color: #333;
+  color: #fff;
   font-size: 1em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7882352941);
 }
-.routing_container .tools .tools_list,
-.routing_container .tools .desks_routing_list,
-.routing_container .desks_routing .tools_list,
-.routing_container .desks_routing .desks_routing_list {
+.routing .tools .tools_list,
+.routing .tools .desks_routing_list,
+.routing .desks_routing .tools_list,
+.routing .desks_routing .desks_routing_list {
   margin-top: 0.5rem;
   width: 100%;
   height: 100%;
@@ -72,12 +82,12 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.5rem;
 }
-.routing_container .tools .tools_list .tools_list_item,
-.routing_container .tools .desks_routing_list .tools_list_item,
-.routing_container .desks_routing .tools_list .tools_list_item,
-.routing_container .desks_routing .desks_routing_list .tools_list_item {
+.routing .tools .tools_list .tools_list_item,
+.routing .tools .desks_routing_list .tools_list_item,
+.routing .desks_routing .tools_list .tools_list_item,
+.routing .desks_routing .desks_routing_list .tools_list_item {
   width: 100%;
   color: #fff;
   box-sizing: border-box;
@@ -90,22 +100,38 @@ li {
   gap: 0.1rem;
   cursor: pointer;
 }
-.routing_container .tools .tools_list .tools_list_item:nth-child(2),
-.routing_container .tools .desks_routing_list .tools_list_item:nth-child(2),
-.routing_container .desks_routing .tools_list .tools_list_item:nth-child(2),
-.routing_container .desks_routing .desks_routing_list .tools_list_item:nth-child(2) {
+.routing .tools .tools_list .tools_list_item:nth-child(2),
+.routing .tools .desks_routing_list .tools_list_item:nth-child(2),
+.routing .desks_routing .tools_list .tools_list_item:nth-child(2),
+.routing .desks_routing .desks_routing_list .tools_list_item:nth-child(2) {
   background-color: #222;
+  box-shadow: 0 0 10px #111;
 }
-.routing_container .tools .tools_list .tools_list_item:nth-child(2) i,
-.routing_container .tools .desks_routing_list .tools_list_item:nth-child(2) i,
-.routing_container .desks_routing .tools_list .tools_list_item:nth-child(2) i,
-.routing_container .desks_routing .desks_routing_list .tools_list_item:nth-child(2) i {
+.routing .tools .tools_list .tools_list_item:nth-child(2) i,
+.routing .tools .desks_routing_list .tools_list_item:nth-child(2) i,
+.routing .desks_routing .tools_list .tools_list_item:nth-child(2) i,
+.routing .desks_routing .desks_routing_list .tools_list_item:nth-child(2) i {
   color: #0890FE;
 }
-.routing_container .tools .tools_list .desks_routing_list_item,
-.routing_container .tools .desks_routing_list .desks_routing_list_item,
-.routing_container .desks_routing .tools_list .desks_routing_list_item,
-.routing_container .desks_routing .desks_routing_list .desks_routing_list_item {
+.routing .tools .tools_list .add_desk,
+.routing .tools .desks_routing_list .add_desk,
+.routing .desks_routing .tools_list .add_desk,
+.routing .desks_routing .desks_routing_list .add_desk {
+  background-color: #01DF95;
+  transition: all 0.2s ease;
+  outline: 2px dashed transparent;
+  box-shadow: 0 0 10px #01DF95;
+}
+.routing .tools .tools_list .add_desk:hover,
+.routing .tools .desks_routing_list .add_desk:hover,
+.routing .desks_routing .tools_list .add_desk:hover,
+.routing .desks_routing .desks_routing_list .add_desk:hover {
+  outline: 2px dashed #999;
+}
+.routing .tools .tools_list .desks_routing_list_item,
+.routing .tools .desks_routing_list .desks_routing_list_item,
+.routing .desks_routing .tools_list .desks_routing_list_item,
+.routing .desks_routing .desks_routing_list .desks_routing_list_item {
   width: 100%;
   color: #fff;
   box-sizing: border-box;
@@ -118,28 +144,29 @@ li {
   gap: 0.1rem;
   cursor: pointer;
 }
-.routing_container .tools .tools_list .desks_routing_list_item:nth-child(1) .folder_icon,
-.routing_container .tools .desks_routing_list .desks_routing_list_item:nth-child(1) .folder_icon,
-.routing_container .desks_routing .tools_list .desks_routing_list_item:nth-child(1) .folder_icon,
-.routing_container .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(1) .folder_icon {
+.routing .tools .tools_list .desks_routing_list_item:nth-child(2) .folder_icon,
+.routing .tools .desks_routing_list .desks_routing_list_item:nth-child(2) .folder_icon,
+.routing .desks_routing .tools_list .desks_routing_list_item:nth-child(2) .folder_icon,
+.routing .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(2) .folder_icon {
   color: #01DF95;
 }
-.routing_container .tools .tools_list .desks_routing_list_item:nth-child(2),
-.routing_container .tools .desks_routing_list .desks_routing_list_item:nth-child(2),
-.routing_container .desks_routing .tools_list .desks_routing_list_item:nth-child(2),
-.routing_container .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(2) {
+.routing .tools .tools_list .desks_routing_list_item:nth-child(3),
+.routing .tools .desks_routing_list .desks_routing_list_item:nth-child(3),
+.routing .desks_routing .tools_list .desks_routing_list_item:nth-child(3),
+.routing .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(3) {
   background-color: #222;
+  box-shadow: 0 0 10px #111;
 }
-.routing_container .tools .tools_list .desks_routing_list_item:nth-child(2) .folder_icon,
-.routing_container .tools .desks_routing_list .desks_routing_list_item:nth-child(2) .folder_icon,
-.routing_container .desks_routing .tools_list .desks_routing_list_item:nth-child(2) .folder_icon,
-.routing_container .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(2) .folder_icon {
+.routing .tools .tools_list .desks_routing_list_item:nth-child(3) .folder_icon,
+.routing .tools .desks_routing_list .desks_routing_list_item:nth-child(3) .folder_icon,
+.routing .desks_routing .tools_list .desks_routing_list_item:nth-child(3) .folder_icon,
+.routing .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(3) .folder_icon {
   color: #F22DAB;
 }
-.routing_container .tools .tools_list .desks_routing_list_item:nth-child(3) .folder_icon,
-.routing_container .tools .desks_routing_list .desks_routing_list_item:nth-child(3) .folder_icon,
-.routing_container .desks_routing .tools_list .desks_routing_list_item:nth-child(3) .folder_icon,
-.routing_container .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(3) .folder_icon {
+.routing .tools .tools_list .desks_routing_list_item:nth-child(4) .folder_icon,
+.routing .tools .desks_routing_list .desks_routing_list_item:nth-child(4) .folder_icon,
+.routing .desks_routing .tools_list .desks_routing_list_item:nth-child(4) .folder_icon,
+.routing .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(4) .folder_icon {
   color: #F2323E;
 }
 
@@ -148,6 +175,136 @@ li {
   height: 100%;
   background-color: #111;
   border-left: 2px solid #333;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+.desk .desk_container {
+  width: 100%;
+  height: 100%;
+  background-color: #191919;
+  border-radius: 16px;
+  box-shadow: 0 0 10px #000;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: calc(1rem - 10px);
+}
+.desk .desk_container .desk_header {
+  width: 100%;
+  height: 3.5rem;
+  background-color: #222;
+  box-shadow: 0 0 10px #111;
+  border-radius: 10px;
+}
+.desk .desk_container .desk_header .desk_header_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+.desk .desk_container .desk_header .desk_header_container .desk_header_colums_creator_btn {
+  width: fit-content;
+  padding: 0.5rem 2rem;
+  background-color: #01DF95;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  display: inline-flex;
+  font-family: "Google Sans", sans-serif;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+  outline: 2px dashed transparent;
+  box-shadow: 0 0 10px #01DF95;
+}
+.desk .desk_container .desk_header .desk_header_container .desk_header_colums_creator_btn:hover {
+  outline: 2px dashed #999;
+}
+.desk .desk_container .desk_columns_list_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item {
+  width: 20rem;
+  height: 100%;
+  background-color: #222;
+  box-shadow: 0 0 10px #111;
+  border-radius: 10px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_header {
+  width: 100%;
+  height: fit-content;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_header h1 {
+  color: #353535;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  font-size: 2em;
+  border-bottom: 2px dashed #666;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_tegs {
+  width: 100%;
+  height: fit-content;
+  max-height: 6rem;
+  display: block;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_tegs .tegs_list {
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px dashed #666;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_tegs .tegs_list .tegs_list_item {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.2rem 0.5rem;
+  background-color: #088ffe;
+  box-shadow: 0 0 10px #088ffe;
+  border-radius: 10px;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_tegs .tegs_list .tegs_list_item:nth-child(1) {
+  background-color: #088ffe;
+  box-shadow: 0 0 10px #088ffe;
+  border-radius: 10px;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_tegs .tegs_list .tegs_list_item:nth-child(2) {
+  background-color: #F22DAB;
+  box-shadow: 0 0 10px #F22DAB;
+  border-radius: 10px;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_tegs .tegs_list .tegs_list_item:nth-child(3) {
+  background-color: #F2323E;
+  box-shadow: 0 0 10px #F2323E;
+  border-radius: 10px;
+}
+.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_tegs .tegs_list .tegs_list_item p {
+  color: #fff;
+  font-family: "Google Sans", sans-serif;
+  font-size: 0.9em;
 }
 
 /*# sourceMappingURL=main.css.map */
