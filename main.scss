@@ -100,7 +100,7 @@ li {
                 gap: 0.1rem;
                 cursor: pointer;
 
-                &:nth-child(2) {
+                &:has(.tools_list_item__active) {
                     background-color: #222;
                     box-shadow: 0 0 10px #111;
 
@@ -109,6 +109,11 @@ li {
                     }
                 }
             }
+
+            // .tools_list_item__active {
+            //     background-color: #222;
+            //     box-shadow: 0 0 10px #111;
+            // }
 
             .add_desk {
                 background-color: #01DF95;
@@ -179,7 +184,9 @@ li {
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        gap: calc(1rem - 10px);
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
 
         .desk_header {
             width: 100%;
@@ -227,85 +234,104 @@ li {
             scrollbar-width: none;
 
             .desk_columns_list {
+                width: fit-content;
+                height: 100%;
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: fit-content;
-                height: 100%;
                 display: flex;
                 align-items: start;
-                gap: 1rem;
-                padding: 10px;
-                box-sizing: border-box;
+                gap: 1.5rem;
 
                 .desk_columns_list_item {
                     width: 20rem;
                     height: 100%;
-                    background-color: #222;
-                    box-shadow: 0 0 10px #111;
                     border-radius: 10px;
                     padding: 1rem;
                     box-sizing: border-box;
 
-                    .desk_columns_list_item_header {
-                        width: 100%;
-                        height: fit-content;
 
-                        h1 {
-                            color: #353535;
-                            text-transform: uppercase;
-                            font-family: "Oswald", sans-serif;
-                            font-size: 2em;
-                            border-bottom: 2px dashed #666;
+                    .desk_columns_list_item_container {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2rem;
+
+                        .desk_columns_list_item_header {
+                            width: 100%;
+                            height: fit-content;
+                            display: flex;
+                            flex-direction: column;
+
+
+                            h2 {
+                                font-family: "Google Sans", sans-serif;
+                                letter-spacing: -1px;
+                                color: #fff;
+                                font-size: 1.5em;
+                                width: 100%;
+                            }
+
+                            .tegs {
+                                display: flex;
+                                width: 100%;
+                                height: 100%;
+
+                                .tegs_list {
+                                    width: 100%;
+                                    height: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 1rem;
+
+                                    .teg {
+                                        width: fit-content;
+                                        height: fit-content;
+                                        padding: 0.2rem 0.5rem;
+                                        color: #fff;
+                                        border-radius: 10px;
+                                        font-size: 0.9em;
+
+                                        &:nth-child(1) {
+                                            background-color: #0890FE;
+                                            box-shadow: 0 0 10px #0890FE;
+                                        }
+
+                                        &:nth-child(2) {
+                                            background-color: #F22DAB;
+                                            box-shadow: 0 0 10px #F22DAB;
+                                        }
+
+                                        &:nth-child(3) {
+                                            color: #000;
+                                            background-color: #F1CA51;
+                                            box-shadow: 0 0 10px #F1CA51;
+                                        }
+                                    }
+                                }
+                            }
                         }
-                    }
 
-                    .desk_columns_list_item_tegs {
-                        width: 100%;
-                        height: fit-content;
-                        max-height: 6rem;
-                        display: block;
-
-                        .tegs_list {
+                        .desk_column_tasks {
                             width: 100%;
                             height: 100%;
-                            border-bottom: 2px dashed #666;
-                            display: flex;
-                            // justify-content: space-between;
-                            flex-wrap: wrap;
-                            gap: 0.5rem;
-                            padding: 0.5rem 0;
 
-                            .tegs_list_item {
-                                width: fit-content;
-                                height: fit-content;
-                                padding: 0.2rem 0.5rem;
-                                background-color: #088ffe;
-                                box-shadow: 0 0 10px #088ffe;
-                                border-radius: 10px;
+                            .desk_column_tasks_list {
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 1rem;
 
-                                &:nth-child(1) {
-                                    background-color: #088ffe;
-                                    box-shadow: 0 0 10px #088ffe;
+                                .task {
+                                    width: 100%;
+                                    height: 10rem;
                                     border-radius: 10px;
-                                }
 
-                                &:nth-child(2) {
-                                    background-color: #F22DAB;
-                                    box-shadow: 0 0 10px #F22DAB;
-                                    border-radius: 10px;
-                                }
-
-                                &:nth-child(3) {
-                                    background-color: #F2323E;
-                                    box-shadow: 0 0 10px #F2323E;
-                                    border-radius: 10px;
-                                }
-
-                                p {
-                                    color: #fff;
-                                    font-family: "Google Sans", sans-serif;
-                                    font-size: 0.9em;
+                                    background-color: #222;
+                                    box-shadow: 0 0 10px #111;
+                                    cursor: pointer;
                                 }
                             }
                         }
