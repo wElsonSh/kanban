@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-// font-family: "Oswald", sans-serif;
-@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap');
-// font-family: "Cascadia Code", sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 // font-family: "Google Sans", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+// font-family: "Oswald", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+// font-family: "Shadows Into Light", cursive;
 
 body {
     margin: 0;
@@ -14,6 +14,7 @@ body {
     scroll-behavior: smooth;
     overflow-x: hidden;
     user-select: none;
+    background-color: #FAF4E4;
 }
 
 * {
@@ -37,301 +38,422 @@ li {
 }
 
 .wrapper {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    gap: 2rem;
 }
 
-.routing {
-    width: 15%;
+.navbar {
+    width: 100%;
     height: 100%;
-    background-color: #111;
-    padding: 0.5rem;
+    background-color: #121212;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #111;
+    padding: 1rem;
     box-sizing: border-box;
 
-    .routing_container {
+    .navbar_container {
         width: 100%;
         height: 100%;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-rows: 1fr 4fr;
         gap: 1rem;
-        padding: 0.5rem;
-        box-sizing: border-box;
-        border-radius: 16px;
-        background-color: #191919;
-        box-shadow: 0 0 10px #000;
-    }
 
-    .tools,
-    .desks_routing {
-        width: 100%;
-        min-height: 15%;
-        background-color: transparent;
-
-        h4 {
-            font-family: "Oswald", sans-serif;
-            color: #fff;
-            font-size: 1em;
-            text-shadow: 0 0 10px #ffffffc9;
-        }
-
-        .tools_list,
-        .desks_routing_list {
-            margin-top: 0.5rem;
+        .navbar_header {
             width: 100%;
             height: 100%;
-            box-sizing: border-box;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            flex-direction: column;
 
-            .tools_list_item {
+            a {
                 width: 100%;
-                color: #fff;
-                box-sizing: border-box;
-                padding: 0.5rem 2rem;
-                border-radius: 10px;
-                font-family: "Google Sans", sans-serif;
-                font-size: 0.9em;
-                display: flex;
-                align-items: center;
-                gap: 0.1rem;
-                cursor: pointer;
-
-                &:has(.tools_list_item__active) {
-                    background-color: #222;
-                    box-shadow: 0 0 10px #111;
-
-                    i {
-                        color: #0890FE;
-                    }
-                }
-            }
-
-            // .tools_list_item__active {
-            //     background-color: #222;
-            //     box-shadow: 0 0 10px #111;
-            // }
-
-            .add_desk {
-                background-color: #01DF95;
+                height: fit-content;
+                text-align: center;
                 transition: all .2s ease;
-                outline: 2px dashed transparent;
-                box-shadow: 0 0 10px #01DF95;
 
                 &:hover {
-                    outline: 2px dashed #999;
+                    h1 {
+                        color: #B6CAEB;
+                    }
+                }
+
+                h1 {
+                    color: #F2F2F2;
+                    font-family: "Shadows Into Light", cursive;
+                    transition: inherit;
                 }
             }
 
-            .desks_routing_list_item {
+            .navbar_header_body {
                 width: 100%;
-                color: #fff;
-                box-sizing: border-box;
-                padding: 0.5rem 2rem;
-                font-family: "Google Sans", sans-serif;
-                font-size: 0.9em;
-                border-radius: 10px;
+                height: 100%;
+
+                .navbar_header_body_list {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.7rem;
+                    border-bottom: 2px dashed #F2F2F2;
+
+                    .navbar_header_body_list_item {
+                        width: 100%;
+                        height: fit-content;
+
+                        input {
+                            width: 100%;
+                            height: 100%;
+                            outline: none;
+                            border: none;
+                            padding: 0.5rem 1rem;
+                            box-sizing: border-box;
+                            border-radius: 10px;
+                            font-family: "Google Sans", sans-serif;
+                            font-size: 0.9em;
+                            outline: 2px dashed transparent;
+                            transition: all .2s ease;
+
+                            &:focus {
+                                outline: 2px dashed #f2f2f2;
+                            }
+                        }
+
+                        button {
+                            width: 100%;
+                            height: 2.3rem;
+                            outline: none;
+                            border: none;
+                            border-radius: 10px;
+                            font-family: "Oswald", sans-serif;
+                            font-size: 1em;
+                            background-color: #F6D868;
+                            cursor: pointer;
+                            transition: all .4s ease;
+                            outline: 2px dashed transparent;
+                            position: relative;
+                            overflow: hidden;
+
+                            p {
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                z-index: 10;
+                            }
+
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                width: 15rem;
+                                height: 5rem;
+                                background-color: #B6CAEB;
+                                top: -45%;
+                                left: -16rem;
+                                transform: rotate(7deg);
+                                transition: all .4s ease;
+                            }
+
+                            &:hover {
+                                outline: 2px dashed #B6CAEB;
+
+                                &::after {
+                                    left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .navbar_desks {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+            scrollbar-width: none;
+            padding-top: 0.2rem;
+
+            .navbar_desks_list {
+                position: absolute;
+                width: 100%;
+                height: fit-content;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                gap: 0.1rem;
-                cursor: pointer;
+                gap: 0.5rem;
+                padding: 0 2px;
+                box-sizing: border-box;
 
-                &:nth-child(2) {
-                    .folder_icon {
-                        color: #01DF95;
+                .navbar_desks_list_item {
+                    color: #121212;
+                    font-family: "Google Sans", sans-serif;
+                    width: 100%;
+                    height: fit-content;
+                    padding: 0.5rem 1rem;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.2rem;
+                    transition: all .2s ease;
+
+                    &:nth-child(1) {
+                        background-color: #F6C3F2;
+                    }
+
+                    &:nth-child(2) {
+                        background-color: #B6CAEB;
+                    }
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 2px 4px #666;
+                    }
+
+                    &:active {
+                        transform: translateY(-1px);
+                        box-shadow: 2px 2px #666;
                     }
                 }
-
-                &:nth-child(3) {
-                    background-color: #222;
-                    box-shadow: 0 0 10px #111;
-
-                    .folder_icon {
-                        color: #F22DAB;
-                    }
-                }
-
-                &:nth-child(4) {
-                    .folder_icon {
-                        color: #F2323E;
-                    }
-                }
-
-                // #F0C403 #F3632E #F2323E #01DF95 #C42BF4
             }
         }
     }
+
 }
 
-.desk {
-    width: 85%;
+.desks_monitor {
+    width: 100%;
     height: 100%;
-    background-color: #111;
-    border-left: 2px solid #333;
-    padding: 0.5rem;
+    background-color: #121212;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #111;
+    padding: 1rem;
     box-sizing: border-box;
 
-    .desk_container {
+    .desks_monitor_container {
         width: 100%;
         height: 100%;
-        background-color: #191919;
-        border-radius: 16px;
-        box-shadow: 0 0 10px #000;
-        padding: 1rem;
-        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        align-items: center;
-        justify-content: center;
 
-        .desk_header {
+        .desks_monitor_header {
             width: 100%;
-            height: 3.5rem;
+            height: 3rem;
             background-color: #222;
-            box-shadow: 0 0 10px #111;
             border-radius: 10px;
+            padding: 0.5rem 1rem;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 0 10px #222;
+            position: relative;
 
-            .desk_header_container {
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                padding: 0 1rem;
+            .creat_column_btn,
+            .del_column_btn {
+                width: 2rem;
+                height: 2rem;
+                cursor: pointer;
+                border-radius: 50%;
+                background-color: #F6D868;
+                border: none;
+                outline: 2px dashed transparent;
+                font-size: 0.8em;
+                transition: all .2s ease;
 
-                .desk_header_colums_creator_btn {
-                    width: fit-content;
-                    padding: 0.5rem 2rem;
-                    background-color: #01DF95;
-                    border-radius: 10px;
-                    border: none;
-                    outline: none;
-                    cursor: pointer;
-                    color: #fff;
-                    display: inline-flex;
-                    font-family: "Google Sans", sans-serif;
-                    font-size: 0.9em;
-                    transition: all .2s ease;
-                    outline: 2px dashed transparent;
-                    box-shadow: 0 0 10px #01DF95;
-
-                    &:hover {
-                        outline: 2px dashed #999;
-                    }
+                &:hover {
+                    outline: 2px dashed #F6D868;
                 }
+            }
+
+            .del_column_btn {
+                position: absolute;
+                right: 1rem;
+
+                &:hover {
+                    outline: 2px dashed #F6D868;
+                    color: #E60023;
+                }
+            }
+
+            span {
+                padding: 0 1rem;
+                color: #F2F2F2;
+                font-family: "Oswald", sans-serif;
+                font-size: 1em;
             }
         }
 
-        .desk_columns_list_container {
+        .desk_monitor_list_container {
             width: 100%;
             height: 100%;
             position: relative;
             overflow-y: hidden;
             overflow-x: auto;
-            scrollbar-width: none;
 
-            .desk_columns_list {
-                width: fit-content;
-                height: 100%;
+            .desk_monitor_list {
                 position: absolute;
                 top: 0;
                 left: 0;
+                height: 100%;
+                width: fit-content;
+                min-width: 100%;
                 display: flex;
                 align-items: start;
-                gap: 1.5rem;
+                gap: 2rem;
 
-                .desk_columns_list_item {
-                    width: 20rem;
+                .column {
+                    width: 15rem;
                     height: 100%;
-                    border-radius: 10px;
-                    padding: 1rem;
-                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
 
-
-                    .desk_columns_list_item_container {
+                    .column_characteristics {
                         width: 100%;
-                        height: 100%;
+                        min-height: 8rem;
+                        height: fit-content;
+                        background-color: #b999f5;
+                        padding: 1rem 0;
+                        border-radius: 10px;
                         display: flex;
                         flex-direction: column;
-                        gap: 2rem;
+                        align-items: start;
+                        padding: 0.5rem;
+                        box-sizing: border-box;
+                        gap: 0.7rem;
 
-                        .desk_columns_list_item_header {
+                        .column_header {
                             width: 100%;
-                            height: fit-content;
+                            height: 2rem;
                             display: flex;
-                            flex-direction: column;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding-right: 0.5rem;
+                            box-sizing: border-box;
 
-
-                            h2 {
+                            .column_name {
+                                background-color: #121212;
+                                color: #F2F2F2;
+                                width: fit-content;
+                                height: 100%;
+                                padding: 0.2rem 0.5rem;
+                                border-radius: 10px;
+                                display: flex;
+                                align-items: center;
+                                font-size: 0.9em;
                                 font-family: "Google Sans", sans-serif;
-                                letter-spacing: -1px;
-                                color: #fff;
-                                font-size: 1.5em;
-                                width: 100%;
                             }
 
-                            .tegs {
-                                display: flex;
-                                width: 100%;
-                                height: 100%;
+                            .delete_column_btn {
+                                width: fit-content;
+                                height: fit-content;
+                                background-color: transparent;
+                                outline: none;
+                                border: none;
+                                cursor: pointer;
+                                transition: all .2s ease;
+                                font-size: 1em;
 
-                                .tegs_list {
-                                    width: 100%;
-                                    height: 100%;
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 1rem;
-
-                                    .teg {
-                                        width: fit-content;
-                                        height: fit-content;
-                                        padding: 0.2rem 0.5rem;
-                                        color: #fff;
-                                        border-radius: 10px;
-                                        font-size: 0.9em;
-
-                                        &:nth-child(1) {
-                                            background-color: #0890FE;
-                                            box-shadow: 0 0 10px #0890FE;
-                                        }
-
-                                        &:nth-child(2) {
-                                            background-color: #F22DAB;
-                                            box-shadow: 0 0 10px #F22DAB;
-                                        }
-
-                                        &:nth-child(3) {
-                                            color: #000;
-                                            background-color: #F1CA51;
-                                            box-shadow: 0 0 10px #F1CA51;
-                                        }
-                                    }
+                                &:hover {
+                                    color: #E60023;
                                 }
                             }
                         }
 
-                        .desk_column_tasks {
+                        .column_tegs {
                             width: 100%;
-                            height: 100%;
+                            min-height: 2rem;
+                            max-height: 4.4rem;
+                            overflow: hidden;
+                            height: fit-content;
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 0.2rem;
 
-                            .desk_column_tasks_list {
-                                width: 100%;
-                                height: 100%;
+                            .column_teg {
+                                width: fit-content;
+                                height: 2rem;
+                                padding: 0 0.5rem;
                                 display: flex;
-                                flex-direction: column;
-                                gap: 1rem;
+                                align-items: center;
+                                border-radius: 10px;
+                                background-color: #F2F2F2;
+                                color: #121212;
+                                font-size: 0.9em;
+                                font-family: "Google Sans", sans-serif;
+                            }
+                        }
+                    }
 
-                                .task {
-                                    width: 100%;
-                                    height: 10rem;
-                                    border-radius: 10px;
+                    .column_content {
+                        width: 100%;
+                        height: 100%;
+                        border-top: 2px dashed #F2F2F2;
+                        padding-top: 1rem;
+                        box-sizing: border-box;
+                        position: relative;
+                        overflow-x: hidden;
+                        overflow-y: auto;
+                        scrollbar-width: none;
 
-                                    background-color: #222;
-                                    box-shadow: 0 0 10px #111;
-                                    cursor: pointer;
+                        .column_content_list {
+                            position: absolute;
+                            top: 1rem;
+                            left: 0;
+                            width: 100%;
+                            height: fit-content;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1rem;
+
+                            .column_content_task {
+                                width: 100%;
+                                height: fit-content;
+                                max-height: 20rem;
+                                overflow: hidden;
+                                border-radius: 10px;
+                                padding: 0.5rem;
+                                box-sizing: border-box;
+                                cursor: grab;
+                                font-family: "Google Sans", sans-serif;
+                                color: #121212;
+                                font-size: 1em;
+
+                                &:nth-child(1) {
+                                    background-color: #F6D868;
+                                }
+
+                                &:nth-child(2) {
+                                    background-color: #D9E85D;
+                                }
+
+                                &:nth-child(3) {
+                                    background-color: #B6CAEB;
+                                }
+
+                                &:nth-child(4) {
+                                    background-color: #F6C3F2;
+                                }
+
+                                &:active {
+                                    cursor: grabbing;
                                 }
                             }
                         }

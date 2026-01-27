@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -10,6 +10,7 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   user-select: none;
+  background-color: #FAF4E4;
 }
 
 * {
@@ -33,294 +34,381 @@ li {
 }
 
 .wrapper {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  gap: 2rem;
 }
 
-.routing {
-  width: 15%;
+.navbar {
+  width: 100%;
   height: 100%;
-  background-color: #111;
-  padding: 0.5rem;
+  background-color: #121212;
+  border-radius: 20px;
+  box-shadow: 0 0 5px #111;
+  padding: 1rem;
   box-sizing: border-box;
 }
-.routing .routing_container {
+.navbar .navbar_container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  gap: 1rem;
+}
+.navbar .navbar_container .navbar_header {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.navbar .navbar_container .navbar_header a {
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.navbar .navbar_container .navbar_header a:hover h1 {
+  color: #B6CAEB;
+}
+.navbar .navbar_container .navbar_header a h1 {
+  color: #F2F2F2;
+  font-family: "Shadows Into Light", cursive;
+  transition: inherit;
+}
+.navbar .navbar_container .navbar_header .navbar_header_body {
+  width: 100%;
+  height: 100%;
+}
+.navbar .navbar_container .navbar_header .navbar_header_body .navbar_header_body_list {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 0.5rem;
-  box-sizing: border-box;
-  border-radius: 16px;
-  background-color: #191919;
-  box-shadow: 0 0 10px #000;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  border-bottom: 2px dashed #F2F2F2;
 }
-.routing .tools,
-.routing .desks_routing {
+.navbar .navbar_container .navbar_header .navbar_header_body .navbar_header_body_list .navbar_header_body_list_item {
   width: 100%;
-  min-height: 15%;
-  background-color: transparent;
+  height: fit-content;
 }
-.routing .tools h4,
-.routing .desks_routing h4 {
-  font-family: "Oswald", sans-serif;
-  color: #fff;
-  font-size: 1em;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7882352941);
-}
-.routing .tools .tools_list,
-.routing .tools .desks_routing_list,
-.routing .desks_routing .tools_list,
-.routing .desks_routing .desks_routing_list {
-  margin-top: 0.5rem;
+.navbar .navbar_container .navbar_header .navbar_header_body .navbar_header_body_list .navbar_header_body_list_item input {
   width: 100%;
   height: 100%;
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
   box-sizing: border-box;
+  border-radius: 10px;
+  font-family: "Google Sans", sans-serif;
+  font-size: 0.9em;
+  outline: 2px dashed transparent;
+  transition: all 0.2s ease;
+}
+.navbar .navbar_container .navbar_header .navbar_header_body .navbar_header_body_list .navbar_header_body_list_item input:focus {
+  outline: 2px dashed #f2f2f2;
+}
+.navbar .navbar_container .navbar_header .navbar_header_body .navbar_header_body_list .navbar_header_body_list_item button {
+  width: 100%;
+  height: 2.3rem;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-family: "Oswald", sans-serif;
+  font-size: 1em;
+  background-color: #F6D868;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  outline: 2px dashed transparent;
+  position: relative;
+  overflow: hidden;
+}
+.navbar .navbar_container .navbar_header .navbar_header_body .navbar_header_body_list .navbar_header_body_list_item button p {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.navbar .navbar_container .navbar_header .navbar_header_body .navbar_header_body_list .navbar_header_body_list_item button::after {
+  content: "";
+  position: absolute;
+  width: 15rem;
+  height: 5rem;
+  background-color: #B6CAEB;
+  top: -45%;
+  left: -16rem;
+  transform: rotate(7deg);
+  transition: all 0.4s ease;
+}
+.navbar .navbar_container .navbar_header .navbar_header_body .navbar_header_body_list .navbar_header_body_list_item button:hover {
+  outline: 2px dashed #B6CAEB;
+}
+.navbar .navbar_container .navbar_header .navbar_header_body .navbar_header_body_list .navbar_header_body_list_item button:hover::after {
+  left: 0;
+}
+.navbar .navbar_container .navbar_desks {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding-top: 0.2rem;
+}
+.navbar .navbar_container .navbar_desks .navbar_desks_list {
+  position: absolute;
+  width: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-}
-.routing .tools .tools_list .tools_list_item,
-.routing .tools .desks_routing_list .tools_list_item,
-.routing .desks_routing .tools_list .tools_list_item,
-.routing .desks_routing .desks_routing_list .tools_list_item {
-  width: 100%;
-  color: #fff;
+  padding: 0 2px;
   box-sizing: border-box;
-  padding: 0.5rem 2rem;
-  border-radius: 10px;
+}
+.navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item {
+  color: #121212;
   font-family: "Google Sans", sans-serif;
-  font-size: 0.9em;
+  width: 100%;
+  height: fit-content;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: 0.1rem;
-  cursor: pointer;
-}
-.routing .tools .tools_list .tools_list_item:has(.tools_list_item__active),
-.routing .tools .desks_routing_list .tools_list_item:has(.tools_list_item__active),
-.routing .desks_routing .tools_list .tools_list_item:has(.tools_list_item__active),
-.routing .desks_routing .desks_routing_list .tools_list_item:has(.tools_list_item__active) {
-  background-color: #222;
-  box-shadow: 0 0 10px #111;
-}
-.routing .tools .tools_list .tools_list_item:has(.tools_list_item__active) i,
-.routing .tools .desks_routing_list .tools_list_item:has(.tools_list_item__active) i,
-.routing .desks_routing .tools_list .tools_list_item:has(.tools_list_item__active) i,
-.routing .desks_routing .desks_routing_list .tools_list_item:has(.tools_list_item__active) i {
-  color: #0890FE;
-}
-.routing .tools .tools_list .add_desk,
-.routing .tools .desks_routing_list .add_desk,
-.routing .desks_routing .tools_list .add_desk,
-.routing .desks_routing .desks_routing_list .add_desk {
-  background-color: #01DF95;
+  gap: 0.2rem;
   transition: all 0.2s ease;
-  outline: 2px dashed transparent;
-  box-shadow: 0 0 10px #01DF95;
 }
-.routing .tools .tools_list .add_desk:hover,
-.routing .tools .desks_routing_list .add_desk:hover,
-.routing .desks_routing .tools_list .add_desk:hover,
-.routing .desks_routing .desks_routing_list .add_desk:hover {
-  outline: 2px dashed #999;
+.navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item:nth-child(1) {
+  background-color: #F6C3F2;
 }
-.routing .tools .tools_list .desks_routing_list_item,
-.routing .tools .desks_routing_list .desks_routing_list_item,
-.routing .desks_routing .tools_list .desks_routing_list_item,
-.routing .desks_routing .desks_routing_list .desks_routing_list_item {
-  width: 100%;
-  color: #fff;
-  box-sizing: border-box;
-  padding: 0.5rem 2rem;
-  font-family: "Google Sans", sans-serif;
-  font-size: 0.9em;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: 0.1rem;
-  cursor: pointer;
+.navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item:nth-child(2) {
+  background-color: #B6CAEB;
 }
-.routing .tools .tools_list .desks_routing_list_item:nth-child(2) .folder_icon,
-.routing .tools .desks_routing_list .desks_routing_list_item:nth-child(2) .folder_icon,
-.routing .desks_routing .tools_list .desks_routing_list_item:nth-child(2) .folder_icon,
-.routing .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(2) .folder_icon {
-  color: #01DF95;
+.navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item:hover {
+  transform: translateY(-2px);
+  box-shadow: 2px 4px #666;
 }
-.routing .tools .tools_list .desks_routing_list_item:nth-child(3),
-.routing .tools .desks_routing_list .desks_routing_list_item:nth-child(3),
-.routing .desks_routing .tools_list .desks_routing_list_item:nth-child(3),
-.routing .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(3) {
-  background-color: #222;
-  box-shadow: 0 0 10px #111;
-}
-.routing .tools .tools_list .desks_routing_list_item:nth-child(3) .folder_icon,
-.routing .tools .desks_routing_list .desks_routing_list_item:nth-child(3) .folder_icon,
-.routing .desks_routing .tools_list .desks_routing_list_item:nth-child(3) .folder_icon,
-.routing .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(3) .folder_icon {
-  color: #F22DAB;
-}
-.routing .tools .tools_list .desks_routing_list_item:nth-child(4) .folder_icon,
-.routing .tools .desks_routing_list .desks_routing_list_item:nth-child(4) .folder_icon,
-.routing .desks_routing .tools_list .desks_routing_list_item:nth-child(4) .folder_icon,
-.routing .desks_routing .desks_routing_list .desks_routing_list_item:nth-child(4) .folder_icon {
-  color: #F2323E;
+.navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item:active {
+  transform: translateY(-1px);
+  box-shadow: 2px 2px #666;
 }
 
-.desk {
-  width: 85%;
-  height: 100%;
-  background-color: #111;
-  border-left: 2px solid #333;
-  padding: 0.5rem;
-  box-sizing: border-box;
-}
-.desk .desk_container {
+.desks_monitor {
   width: 100%;
   height: 100%;
-  background-color: #191919;
-  border-radius: 16px;
-  box-shadow: 0 0 10px #000;
+  background-color: #121212;
+  border-radius: 20px;
+  box-shadow: 0 0 5px #111;
   padding: 1rem;
   box-sizing: border-box;
+}
+.desks_monitor .desks_monitor_container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: center;
-  justify-content: center;
 }
-.desk .desk_container .desk_header {
+.desks_monitor .desks_monitor_container .desks_monitor_header {
   width: 100%;
-  height: 3.5rem;
+  height: 3rem;
   background-color: #222;
-  box-shadow: 0 0 10px #111;
   border-radius: 10px;
-}
-.desk .desk_container .desk_header .desk_header_container {
-  width: 100%;
-  height: 100%;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
+  gap: 1rem;
+  box-shadow: 0 0 10px #222;
+  position: relative;
 }
-.desk .desk_container .desk_header .desk_header_container .desk_header_colums_creator_btn {
-  width: fit-content;
-  padding: 0.5rem 2rem;
-  background-color: #01DF95;
-  border-radius: 10px;
-  border: none;
-  outline: none;
+.desks_monitor .desks_monitor_container .desks_monitor_header .creat_column_btn,
+.desks_monitor .desks_monitor_container .desks_monitor_header .del_column_btn {
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
-  color: #fff;
-  display: inline-flex;
-  font-family: "Google Sans", sans-serif;
-  font-size: 0.9em;
-  transition: all 0.2s ease;
+  border-radius: 50%;
+  background-color: #F6D868;
+  border: none;
   outline: 2px dashed transparent;
-  box-shadow: 0 0 10px #01DF95;
+  font-size: 0.8em;
+  transition: all 0.2s ease;
 }
-.desk .desk_container .desk_header .desk_header_container .desk_header_colums_creator_btn:hover {
-  outline: 2px dashed #999;
+.desks_monitor .desks_monitor_container .desks_monitor_header .creat_column_btn:hover,
+.desks_monitor .desks_monitor_container .desks_monitor_header .del_column_btn:hover {
+  outline: 2px dashed #F6D868;
 }
-.desk .desk_container .desk_columns_list_container {
+.desks_monitor .desks_monitor_container .desks_monitor_header .del_column_btn {
+  position: absolute;
+  right: 1rem;
+}
+.desks_monitor .desks_monitor_container .desks_monitor_header .del_column_btn:hover {
+  outline: 2px dashed #F6D868;
+  color: #E60023;
+}
+.desks_monitor .desks_monitor_container .desks_monitor_header span {
+  padding: 0 1rem;
+  color: #F2F2F2;
+  font-family: "Oswald", sans-serif;
+  font-size: 1em;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container {
   width: 100%;
   height: 100%;
   position: relative;
   overflow-y: hidden;
   overflow-x: auto;
-  scrollbar-width: none;
 }
-.desk .desk_container .desk_columns_list_container .desk_columns_list {
-  width: fit-content;
-  height: 100%;
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list {
   position: absolute;
   top: 0;
   left: 0;
+  height: 100%;
+  width: fit-content;
+  min-width: 100%;
   display: flex;
   align-items: start;
-  gap: 1.5rem;
-}
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item {
-  width: 20rem;
-  height: 100%;
-  border-radius: 10px;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   gap: 2rem;
 }
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_columns_list_item_header {
-  width: 100%;
-  height: fit-content;
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column {
+  width: 15rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
-}
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_columns_list_item_header h2 {
-  font-family: "Google Sans", sans-serif;
-  letter-spacing: -1px;
-  color: #fff;
-  font-size: 1.5em;
-  width: 100%;
-}
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_columns_list_item_header .tegs {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_columns_list_item_header .tegs .tegs_list {
-  width: 100%;
-  height: 100%;
-  display: flex;
   align-items: center;
   gap: 1rem;
 }
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_columns_list_item_header .tegs .tegs_list .teg {
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_characteristics {
+  width: 100%;
+  min-height: 8rem;
+  height: fit-content;
+  background-color: #b999f5;
+  padding: 1rem 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  gap: 0.7rem;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_characteristics .column_header {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 0.5rem;
+  box-sizing: border-box;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_characteristics .column_header .column_name {
+  background-color: #121212;
+  color: #F2F2F2;
+  width: fit-content;
+  height: 100%;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  font-family: "Google Sans", sans-serif;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_characteristics .column_header .delete_column_btn {
   width: fit-content;
   height: fit-content;
-  padding: 0.2rem 0.5rem;
-  color: #fff;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1em;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_characteristics .column_header .delete_column_btn:hover {
+  color: #E60023;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_characteristics .column_tegs {
+  width: 100%;
+  min-height: 2rem;
+  max-height: 4.4rem;
+  overflow: hidden;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_characteristics .column_tegs .column_teg {
+  width: fit-content;
+  height: 2rem;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
   border-radius: 10px;
+  background-color: #F2F2F2;
+  color: #121212;
   font-size: 0.9em;
+  font-family: "Google Sans", sans-serif;
 }
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_columns_list_item_header .tegs .tegs_list .teg:nth-child(1) {
-  background-color: #0890FE;
-  box-shadow: 0 0 10px #0890FE;
-}
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_columns_list_item_header .tegs .tegs_list .teg:nth-child(2) {
-  background-color: #F22DAB;
-  box-shadow: 0 0 10px #F22DAB;
-}
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_columns_list_item_header .tegs .tegs_list .teg:nth-child(3) {
-  color: #000;
-  background-color: #F1CA51;
-  box-shadow: 0 0 10px #F1CA51;
-}
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_column_tasks {
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content {
   width: 100%;
   height: 100%;
+  border-top: 2px dashed #F2F2F2;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_column_tasks .desk_column_tasks_list {
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list {
+  position: absolute;
+  top: 1rem;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.desk .desk_container .desk_columns_list_container .desk_columns_list .desk_columns_list_item .desk_columns_list_item_container .desk_column_tasks .desk_column_tasks_list .task {
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task {
   width: 100%;
-  height: 10rem;
+  height: fit-content;
+  max-height: 20rem;
+  overflow: hidden;
   border-radius: 10px;
-  background-color: #222;
-  box-shadow: 0 0 10px #111;
-  cursor: pointer;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  cursor: grab;
+  font-family: "Google Sans", sans-serif;
+  color: #121212;
+  font-size: 1em;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:nth-child(1) {
+  background-color: #F6D868;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:nth-child(2) {
+  background-color: #D9E85D;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:nth-child(3) {
+  background-color: #B6CAEB;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:nth-child(4) {
+  background-color: #F6C3F2;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:active {
+  cursor: grabbing;
 }
 
 /*# sourceMappingURL=main.css.map */

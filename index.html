@@ -5,88 +5,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
-    <title>KANBAN</title>
+    <title>Kanban</title>
 </head>
 
 <body>
     <div class="wrapper">
-        <aside class="routing">
-            <div class="routing_container">
-                <div class="tools">
-                    <h4>TOOLS</h4>
-                    <ul class="tools_list">
-                        <li class="tools_list_item">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <p><a class='hash_link' href="#/search">Search</a></p>
+        <aside class="navbar">
+            <div class="navbar_container">
+                <header class="navbar_header">
+                    <a href="/">
+                        <h1>Kanban.</h1>
+                    </a>
+                    <nav class='navbar_header_body'>
+                        <ul class="navbar_header_body_list">
+                            <li class="navbar_header_body_list_item"><input type="text" placeholder='Имя доски:'></li>
+                            <li class="navbar_header_body_list_item">
+                                <button class="create_desk_btn">
+                                    <p>Создать новую доску</p>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <div class="navbar_desks">
+                    <ul class="navbar_desks_list">
+                        <li class="navbar_desks_list_item">
+                            <i class="fa-solid fa-folder"></i>
+                            <p>Desk_Name</p>
                         </li>
-                        <li class="tools_list_item">
-                            <i class="fa-solid fa-list-check"></i>
-                            <p><a class='hash_link' href="#/desks">Desks</a></p>
-                        </li>
-                        <li class="tools_list_item">
-                            <i class="fa-solid fa-circle"></i>
-                            <p>Tool</p>
-                        </li>
-                        <li class="tools_list_item">
-                            <i class="fa-solid fa-circle"></i>
-                            <p>Tool</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="desks_routing">
-                    <h4>DESKS</h4>
-                    <ul class="desks_routing_list">
-                        <li class="desks_routing_list_item add_desk">
-                            <i class="fa-solid fa-plus"></i>
-                            <p>Add desk</p>
-                        </li>
-                        <li class="desks_routing_list_item">
-                            <i class="fa-solid fa-folder folder_icon"></i>
-                            <p>Desk_name</p>
-                        </li>
-                        <li class="desks_routing_list_item">
-                            <i class="fa-solid fa-folder-open folder_icon"></i>
-                            <p>Desk_name</p>
-                        </li>
-                        <li class="desks_routing_list_item">
-                            <i class="fa-solid fa-folder folder_icon"></i>
-                            <p>Desk_name</p>
+                        <li class="navbar_desks_list_item">
+                            <i class="fa-solid fa-folder-open"></i>
+                            <p>Desk_Name</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </aside>
-        <main class="desk">
-            <div class="desk_container" id='desk_container'>
-                <header class="desk_header">
-                    <div class="desk_header_container">
-                        <button class="desk_header_colums_creator_btn">
-                            <p>Create new column</p>
-                        </button>
-                    </div>
+        <main class="desks_monitor">
+            <div class="desks_monitor_container">
+                <header class="desks_monitor_header">
+                    <button class='creat_column_btn'><i class="fa-solid fa-plus"></i></button>
+                    <span>Всего колонок: 13</span>
+                    <span>Всего задач: 128</span>
+                    <button class='del_column_btn'><i class="fa-solid fa-trash"></i></button>
                 </header>
-                <div class="desk_columns_list_container" id='desk_columns_list_container'>
-                    <ul class="desk_columns_list">
-
-                        <li class="desk_columns_list_item">
-                            <div class="desk_columns_list_item_container">
-                                <div class="desk_columns_list_item_header">
-                                    <h2>Name column</h2>
-                                    <div class="tegs">
-                                        <ul class="tegs_list">
-                                            <li class="teg">#teg</li>
-                                            <li class="teg">#teg_2</li>
-                                            <li class="teg">#teg_3</li>
-                                        </ul>
-                                    </div>
+                <div class="desk_monitor_list_container">
+                    <ul class="desk_monitor_list">
+                        <li class="column">
+                            <div class="column_characteristics">
+                                <div class="column_header">
+                                    <span class='column_name'>Column name</span>
+                                    <button class='delete_column_btn'><i class="fa-solid fa-trash"></i></button>
                                 </div>
-                                <div class="desk_column_tasks">
-                                    <ul class="desk_column_tasks_list">
-                                        <li class="task"></li>
-                                        <li class="task"></li>
-                                        <li class="task"></li>
-                                    </ul>
+                                <ul class="column_tegs">
+                                    <li class="column_teg">#teg</li>
+                                    <li class="column_teg">#home</li>
+                                    <li class="column_teg">#work</li>
+                                    <li class="column_teg">#teg</li>
+                                    <li class="column_teg">#home</li>
+                                    <li class="column_teg">#work</li>
+                                </ul>
+                            </div>
+                            <div class="column_content">
+                                <ul class="column_content_list">
+                                    <li class='column_content_task'>
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae
+                                            reiciendis maxime quibusdam temporibus! Tempora quam doloribus eum
+                                            consequuntur labore tenetur dignissimos sapiente nobis quae corrupti?</p>
+                                    </li>
+                                    <li class='column_content_task'>
+                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
+                                            ducimus!</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="column">
+                            <div class="column_characteristics">
+                                <div class="column_header">
+                                    <span class='column_name'>Column name</span>
+                                    <button class='delete_column_btn'><i class="fa-solid fa-trash"></i></button>
                                 </div>
+                                <ul class="column_tegs">
+                                    <li class="column_teg">#teg</li>
+                                    <li class="column_teg">#home</li>
+                                    <li class="column_teg">#work</li>
+                                    <li class="column_teg">#teg</li>
+                                    <li class="column_teg">#home</li>
+                                    <li class="column_teg">#work</li>
+                                </ul>
+                            </div>
+                            <div class="column_content">
+                                <ul class="column_content_list">
+                                    <li class='column_content_task'>
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae
+                                            reiciendis maxime quibusdam temporibus! Tempora quam doloribus eum
+                                            consequuntur labore tenetur dignissimos sapiente nobis quae corrupti?</p>
+                                    </li>
+                                    <li class='column_content_task'>
+                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
+                                            ducimus!</p>
+                                    </li>
+                                    <li class='column_content_task'>
+                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
+                                            ducimus!</p>
+                                    </li>
+                                    <li class='column_content_task'>
+                                        <p>Lorem ipsum dolor sit amet.</p>
+                                    </li>
+                                </ul>
                             </div>
                         </li>
 
@@ -97,7 +124,6 @@
     </div>
 
     <script src="https://kit.fontawesome.com/2e9aa7e3cb.js" crossorigin="anonymous"></script>
-    <script src="./js/main.js"></script>
 </body>
 
 </html>
