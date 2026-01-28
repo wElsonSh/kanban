@@ -382,6 +382,57 @@ li {
   flex-direction: column;
   gap: 1rem;
 }
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_task_creator {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_task_creator .task_creator_btn {
+  width: calc(100% - 4px);
+  height: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #F6D868;
+  font-family: "Oswald", sans-serif;
+  font-size: 1em;
+  transition: all 0.4s ease;
+  outline: 2px dashed transparent;
+  position: relative;
+  overflow: hidden;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_task_creator .task_creator_btn p {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_task_creator .task_creator_btn::after {
+  content: "";
+  position: absolute;
+  width: 15rem;
+  height: 5rem;
+  background-color: #B6CAEB;
+  top: -45%;
+  left: -16rem;
+  transform: rotate(7deg);
+  transition: all 0.4s ease;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_task_creator .task_creator_btn:hover {
+  outline: 2px dashed #B6CAEB;
+}
+.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_task_creator .task_creator_btn:hover::after {
+  left: 0;
+}
 .desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task {
   width: 100%;
   height: fit-content;
