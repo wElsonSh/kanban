@@ -293,7 +293,6 @@ li {
 }
 .desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_characteristics {
   width: 100%;
-  min-height: 8rem;
   height: fit-content;
   background-color: #b999f5;
   padding: 1rem 0;
