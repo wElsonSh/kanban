@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <title>Kanban</title>
 </head>
 
@@ -14,7 +15,7 @@
             <div class="navbar_container">
                 <header class="navbar_header">
                     <a href="/">
-                        <h1>Kanban.</h1>
+                        <h1 class='kanbanTitle'>Kanban.</h1>
                     </a>
                     <nav class='navbar_header_body'>
                         <ul class="navbar_header_body_list">
@@ -29,14 +30,6 @@
                 </header>
                 <div class="navbar_desks">
                     <ul class="navbar_desks_list">
-                        <li class="navbar_desks_list_item">
-                            <i class="fa-solid fa-folder"></i>
-                            <p>Desk_Name</p>
-                        </li>
-                        <li class="navbar_desks_list_item">
-                            <i class="fa-solid fa-folder-open"></i>
-                            <p>Desk_Name</p>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -47,10 +40,10 @@
                     <button class='creat_column_btn' id='create_column_btn'><i class="fa-solid fa-plus"></i></button>
                     <span>Всего колонок: 13</span>
                     <span>Всего задач: 128</span>
-                    <button class='del_column_btn'><i class="fa-solid fa-trash"></i></button>
+                    <button class='del_desk_btn'><i class="fa-solid fa-trash"></i></button>
                 </header>
                 <div class="desk_monitor_list_container">
-                    <ul class="desk_monitor_list" id='desk_monitor_list'>
+                    <ul class="desk_monitor_list">
                         <!-- <li class="column">
                             <div class="column_characteristics">
                                 <div class="column_header">
@@ -94,6 +87,8 @@
 
     <script src="https://kit.fontawesome.com/2e9aa7e3cb.js" crossorigin="anonymous"></script>
     <script src='./js/main.js'></script>
+    <script src='./js/gsap.js'></script>
+
 </body>
 
 </html>

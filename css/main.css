@@ -178,7 +178,7 @@ li {
   box-sizing: border-box;
 }
 .navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item {
-  color: #121212;
+  color: #fff;
   font-family: "Google Sans", sans-serif;
   width: 100%;
   height: fit-content;
@@ -186,16 +186,15 @@ li {
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 10px;
+  transition: all 0.2s ease;
+}
+.navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item a {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   gap: 0.2rem;
-  transition: all 0.2s ease;
-}
-.navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item:nth-child(1) {
-  background-color: #F6C3F2;
-}
-.navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item:nth-child(2) {
-  background-color: #B6CAEB;
+  white-space: nowrap;
 }
 .navbar .navbar_container .navbar_desks .navbar_desks_list .navbar_desks_list_item:hover {
   transform: translateY(-2px);
@@ -236,7 +235,7 @@ li {
   position: relative;
 }
 .desks_monitor .desks_monitor_container .desks_monitor_header .creat_column_btn,
-.desks_monitor .desks_monitor_container .desks_monitor_header .del_column_btn {
+.desks_monitor .desks_monitor_container .desks_monitor_header .del_desk_btn {
   width: 2rem;
   height: 2rem;
   cursor: pointer;
@@ -248,14 +247,14 @@ li {
   transition: all 0.2s ease;
 }
 .desks_monitor .desks_monitor_container .desks_monitor_header .creat_column_btn:hover,
-.desks_monitor .desks_monitor_container .desks_monitor_header .del_column_btn:hover {
+.desks_monitor .desks_monitor_container .desks_monitor_header .del_desk_btn:hover {
   outline: 2px dashed #F6D868;
 }
-.desks_monitor .desks_monitor_container .desks_monitor_header .del_column_btn {
+.desks_monitor .desks_monitor_container .desks_monitor_header .del_desk_btn {
   position: absolute;
   right: 1rem;
 }
-.desks_monitor .desks_monitor_container .desks_monitor_header .del_column_btn:hover {
+.desks_monitor .desks_monitor_container .desks_monitor_header .del_desk_btn:hover {
   outline: 2px dashed #F6D868;
   color: #E60023;
 }
@@ -282,6 +281,7 @@ li {
   display: flex;
   align-items: start;
   gap: 2rem;
+  color: #fff;
 }
 .desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column {
   width: 15rem;
