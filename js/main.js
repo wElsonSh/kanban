@@ -29,7 +29,7 @@ openDB.onsuccess = (event) => {
 
 
     create_desk_btn.addEventListener("click", () => {
-        createNewDesk(prompt("Введи название доски: "))
+        createNewDesk(prompt("Введи название доски: ") || "New desk")
         navbar_desks_list.innerHTML = ""
         showAllDataHTML()
     })
@@ -38,11 +38,19 @@ openDB.onsuccess = (event) => {
         router()
     });
     window.addEventListener("load", () => {
-        router()
+        history.replaceState(null, null, window.location.pathname + window.location.search)
     })
 
     creat_column_btn.addEventListener("click", () => {
         createColumn()
+    })
+
+    desk_monitor_list.addEventListener("click", (e) => {
+        const button = e.target.closest(".task_creator_btn")
+
+        if (button) {
+            createTask(button.id)
+        }
     })
 }
 
@@ -172,16 +180,16 @@ const showColumnsHTML = (arr) => {
         column.innerHTML = `
         <div class="column_characteristics">
             <div class="column_header">
-                <span class='column_name' id='column_name'>${col.column_name}</span>
+                <span class='column_name'>${col.column_name}</span>
                 <button class='delete_column_btn'><i class="fa-solid fa-trash"></i></button>
             </div>
             <ul class="column_tegs" id="tegs__${col.column_name}">
             </ul>
         </div>
         <div class="column_content">
-            <ul class="column_content_list">
+            <ul class="column_content_list" id="tasks__${col.column_name}">
                 <li class="column_task_creator">
-                    <button class="task_creator_btn">
+                    <button class="task_creator_btn" id="${col.column_name}">
                         <p>Создать задачу</p>
                     </button>
                 </li>
@@ -194,6 +202,7 @@ const showColumnsHTML = (arr) => {
         //                 consequuntur labore tenetur dignissimos sapiente nobis quae corrupti?</p>
         //         </li>
         desk_monitor_list.appendChild(column)
+
 
         let tegsArr = [...col.tegs]
 
@@ -210,6 +219,21 @@ const showColumnsHTML = (arr) => {
 
 
 
+        let tasksArr = [...col.tasks]
+        console.log(tasksArr);
+
+        tasksArr.forEach(task => {
+
+
+            const column_tasks = document.getElementById(`tasks__${col.column_name}`)
+                , taskHTML = document.createElement("li")
+
+            taskHTML.className = "column_content_task"
+            taskHTML.innerHTML = `<p>${task}</p>`
+            column_tasks.appendChild(taskHTML)
+
+            console.log(column_tasks);
+        })
     })
 }
 
@@ -226,11 +250,30 @@ const createColumn = () => {
         //     console.log('nop');
 
         // }
-        columnsArr.push({ column_name: prompt("Введи название колонки: "), tasks: [], tegs: prompt("Введите теги через пробел(без #): ").split(" ") || [] })
+        columnsArr.push({ column_name: prompt("Введи название колонки: ") || 'new column', tasks: [], tegs: prompt("Введите теги через пробел(без #): ").split(" ") || [] })
         console.log(columnsArr);
 
-        const updateColumns = store.put(data)
+        store.put(data)
         router()
     }
+
+}
+
+const createTask = (columnName) => {
+    let transaction = db.transaction("desks", "readwrite")
+        , store = transaction.objectStore("desks")
+        , id = Number(getWindowHash().slice(1))
+        , getDesk = store.get(id)
+    getDesk.onsuccess = () => {
+        const data = getDesk.result
+            , columnsArr = data.columns
+            , column = columnsArr.find(item => item.column_name == columnName)
+        column.tasks.push(prompt("Введи задачу:") || 'Пусто нахуй')
+        console.log(column.tasks);
+
+        store.put(data)
+        router()
+    }
+
 
 }

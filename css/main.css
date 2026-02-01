@@ -444,18 +444,7 @@ li {
   font-family: "Google Sans", sans-serif;
   color: #121212;
   font-size: 1em;
-}
-.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:nth-child(1) {
-  background-color: #F6D868;
-}
-.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:nth-child(2) {
-  background-color: #D9E85D;
-}
-.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:nth-child(3) {
   background-color: #B6CAEB;
-}
-.desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:nth-child(4) {
-  background-color: #F6C3F2;
 }
 .desks_monitor .desks_monitor_container .desk_monitor_list_container .desk_monitor_list .column .column_content .column_content_list .column_content_task:active {
   cursor: grabbing;

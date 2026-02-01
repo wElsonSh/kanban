@@ -499,22 +499,23 @@ li {
                                 font-family: "Google Sans", sans-serif;
                                 color: #121212;
                                 font-size: 1em;
+                                background-color: #B6CAEB;
 
-                                &:nth-child(1) {
-                                    background-color: #F6D868;
-                                }
+                                // &:nth-child(1) {
+                                //     background-color: #F6D868;
+                                // }
 
-                                &:nth-child(2) {
-                                    background-color: #D9E85D;
-                                }
+                                // &:nth-child(2) {
+                                //     background-color: #D9E85D;
+                                // }
 
-                                &:nth-child(3) {
-                                    background-color: #B6CAEB;
-                                }
+                                // &:nth-child(3) {
+                                //     background-color: #B6CAEB;
+                                // }
 
-                                &:nth-child(4) {
-                                    background-color: #F6C3F2;
-                                }
+                                // &:nth-child(4) {
+                                //     background-color: #F6C3F2;
+                                // }
 
                                 &:active {
                                     cursor: grabbing;
