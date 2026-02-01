@@ -3,6 +3,7 @@ const openDB = indexedDB.open("kanban", 1)
     , navbar_desks_list = document.querySelector(".navbar_desks_list")
     , desk_monitor_list = document.querySelector(".desk_monitor_list")
     , creat_column_btn = document.querySelector(".creat_column_btn")
+    , del_desk_btn = document.querySelector(".del_desk_btn")
 let db
     , all_desks_btns
     , hash_s_count
@@ -52,6 +53,10 @@ openDB.onsuccess = (event) => {
             createTask(button.id)
         }
     })
+    del_desk_btn.addEventListener("click", () => {
+        deletDesk()
+        history.replaceState(null, null, window.location.pathname + window.location.search)
+    })
 }
 
 const createNewDesk = (DeskName) => {
@@ -88,7 +93,7 @@ const showAllDataHTML = () => {
         let readStoreRes = [...readStore.result]
         console.log(readStoreRes);
 
-
+        navbar_desks_list.innerHTML = ""
         readStoreRes.forEach(desk => {
             const newDesk = document.createElement("li")
 
@@ -275,5 +280,17 @@ const createTask = (columnName) => {
         router()
     }
 
+
+}
+
+const deletDesk = () => {
+    let transaction = db.transaction("desks", "readwrite")
+        , store = transaction.objectStore("desks")
+        , hash = Number(getWindowHash().slice(1))
+        , deleteDesk = store.delete(hash)
+
+    deleteDesk.onsuccess = () => {
+        showAllDataHTML()
+    }
 
 }
