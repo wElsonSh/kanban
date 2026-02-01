@@ -2,6 +2,7 @@ const openDB = indexedDB.open("kanban", 1)
     , create_desk_btn = document.querySelector(".create_desk_btn")
     , navbar_desks_list = document.querySelector(".navbar_desks_list")
     , desk_monitor_list = document.querySelector(".desk_monitor_list")
+    , creat_column_btn = document.querySelector(".creat_column_btn")
 let db
     , all_desks_btns
     , hash_s_count
@@ -39,6 +40,10 @@ openDB.onsuccess = (event) => {
     window.addEventListener("load", () => {
         router()
     })
+
+    creat_column_btn.addEventListener("click", () => {
+        createColumn()
+    })
 }
 
 const createNewDesk = (DeskName) => {
@@ -47,8 +52,8 @@ const createNewDesk = (DeskName) => {
 
     store.add({
         name: DeskName, columns: [
-            { column_name: "column_1", tasks: [] },
-            { column_name: "column_2", tasks: [] }
+            // { column_name: "column_1", tasks: [] },
+            // { column_name: "column_2", tasks: [] }
         ]
     })
     let get_hash = localStorage.getItem("hash")
@@ -158,6 +163,8 @@ const router = () => {
 }
 const showColumnsHTML = (arr) => {
     desk_monitor_list.innerHTML = ""
+    console.log(arr);
+
     arr.forEach(col => {
 
         let column = document.createElement("li")
@@ -168,13 +175,7 @@ const showColumnsHTML = (arr) => {
                 <span class='column_name' id='column_name'>${col.column_name}</span>
                 <button class='delete_column_btn'><i class="fa-solid fa-trash"></i></button>
             </div>
-            <ul class="column_tegs">
-                <li class="column_teg">#teg</li>
-                <li class="column_teg">#home</li>
-                <li class="column_teg">#work</li>
-                <li class="column_teg">#teg</li>
-                <li class="column_teg">#home</li>
-                <li class="column_teg">#work</li>
+            <ul class="column_tegs" id="tegs__${col.column_name}">
             </ul>
         </div>
         <div class="column_content">
@@ -184,18 +185,52 @@ const showColumnsHTML = (arr) => {
                         <p>Создать задачу</p>
                     </button>
                 </li>
-                <li class='column_content_task'>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae
-                        reiciendis maxime quibusdam temporibus! Tempora quam doloribus eum
-                        consequuntur labore tenetur dignissimos sapiente nobis quae corrupti?</p>
-                </li>
-                <li class='column_content_task'>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
-                        ducimus!</p>
-                </li>
             </ul>
         </div>
         `
+        // <li class='column_content_task'>
+        //             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae
+        //                 reiciendis maxime quibusdam temporibus! Tempora quam doloribus eum
+        //                 consequuntur labore tenetur dignissimos sapiente nobis quae corrupti?</p>
+        //         </li>
         desk_monitor_list.appendChild(column)
+
+        let tegsArr = [...col.tegs]
+
+
+        tegsArr.forEach(teg => {
+
+
+            const column_tegs = document.getElementById(`tegs__${col.column_name}`)
+                , tegHTML = document.createElement("li")
+            tegHTML.className = "column_teg"
+            tegHTML.innerHTML = `#${teg}`
+            column_tegs.appendChild(tegHTML)
+        })
+
+
+
     })
+}
+
+const createColumn = () => {
+    let transaction = db.transaction("desks", "readwrite")
+        , store = transaction.objectStore("desks")
+        , id = Number(getWindowHash().slice(1))
+        , getDesk = store.get(id)
+    getDesk.onsuccess = () => {
+        const data = getDesk.result
+            , columnsArr = data.columns
+
+        // if (!columnsArr) {
+        //     console.log('nop');
+
+        // }
+        columnsArr.push({ column_name: prompt("Введи название колонки: "), tasks: [], tegs: prompt("Введите теги через пробел(без #): ").split(" ") || [] })
+        console.log(columnsArr);
+
+        const updateColumns = store.put(data)
+        router()
+    }
+
 }
