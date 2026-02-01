@@ -47,16 +47,20 @@ openDB.onsuccess = (event) => {
     })
 
     desk_monitor_list.addEventListener("click", (e) => {
-        const button = e.target.closest(".task_creator_btn")
+        const taskCreator = e.target.closest(".task_creator_btn")
+            , columnDelete = e.target.closest(".delete_column_btn")
 
-        if (button) {
-            createTask(button.id)
+        if (taskCreator) {
+            createTask(taskCreator.id)
+        } else if (columnDelete) {
+            deleteColumn(columnDelete.id)
         }
     })
     del_desk_btn.addEventListener("click", () => {
-        deletDesk()
+        deleteDesk()
         history.replaceState(null, null, window.location.pathname + window.location.search)
     })
+
 }
 
 const createNewDesk = (DeskName) => {
@@ -186,7 +190,7 @@ const showColumnsHTML = (arr) => {
         <div class="column_characteristics">
             <div class="column_header">
                 <span class='column_name'>${col.column_name}</span>
-                <button class='delete_column_btn'><i class="fa-solid fa-trash"></i></button>
+                <button class='delete_column_btn' id="${col.column_name}"><i class="fa-solid fa-trash"></i></button>
             </div>
             <ul class="column_tegs" id="tegs__${col.column_name}">
             </ul>
@@ -283,7 +287,7 @@ const createTask = (columnName) => {
 
 }
 
-const deletDesk = () => {
+const deleteDesk = () => {
     let transaction = db.transaction("desks", "readwrite")
         , store = transaction.objectStore("desks")
         , hash = Number(getWindowHash().slice(1))
@@ -292,5 +296,25 @@ const deletDesk = () => {
     deleteDesk.onsuccess = () => {
         showAllDataHTML()
     }
+
+}
+
+const deleteColumn = (columnName) => {
+    let transaction = db.transaction("desks", "readwrite")
+        , store = transaction.objectStore("desks")
+        , hash = Number(getWindowHash().slice(1))
+        , getDesk = store.get(hash)
+    getDesk.onsuccess = () => {
+        let result = getDesk.result
+            , columnsArr = result.columns
+            , column = columnsArr.findIndex(item => item.column_name == columnName)
+        columnsArr.splice(column, 1)
+        store.put(result)
+        router()
+    }
+    // let result = getAll.result
+    //     , deskIndex = result.findIndex(item => item.id == hash)
+    //     , resColumns = result[deskIndex].columns
+    //     , resColumn = resColumns.findIndex(item => item.column_name == columnName)
 
 }
