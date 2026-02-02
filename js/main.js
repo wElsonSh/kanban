@@ -49,11 +49,15 @@ openDB.onsuccess = (event) => {
     desk_monitor_list.addEventListener("click", (e) => {
         const taskCreator = e.target.closest(".task_creator_btn")
             , columnDelete = e.target.closest(".delete_column_btn")
+            , taskDelete = e.target.closest(".column_content_task")
 
         if (taskCreator) {
             createTask(taskCreator.id)
         } else if (columnDelete) {
             deleteColumn(columnDelete.id)
+        } else if (taskDelete) {
+            let columnName = taskDelete.className.split(" ")[1]
+            deleteTask(columnName, taskDelete.id)
         }
     })
     del_desk_btn.addEventListener("click", () => {
@@ -237,8 +241,9 @@ const showColumnsHTML = (arr) => {
             const column_tasks = document.getElementById(`tasks__${col.column_name}`)
                 , taskHTML = document.createElement("li")
 
-            taskHTML.className = "column_content_task"
+            taskHTML.className = `column_content_task ${col.column_name}`
             taskHTML.innerHTML = `<p>${task}</p>`
+            taskHTML.id = `${task}`
             column_tasks.appendChild(taskHTML)
 
             console.log(column_tasks);
@@ -259,7 +264,7 @@ const createColumn = () => {
         //     console.log('nop');
 
         // }
-        columnsArr.push({ column_name: prompt("Введи название колонки: ") || 'new column', tasks: [], tegs: prompt("Введите теги через пробел(без #): ").split(" ") || [] })
+        columnsArr.push({ column_name: prompt("Введи название колонки: ").replace(/\s+/g, '') || 'new column', tasks: [], tegs: prompt("Введите теги через пробел(без #): ").split(" ") || [] })
         console.log(columnsArr);
 
         store.put(data)
@@ -312,9 +317,27 @@ const deleteColumn = (columnName) => {
         store.put(result)
         router()
     }
-    // let result = getAll.result
-    //     , deskIndex = result.findIndex(item => item.id == hash)
-    //     , resColumns = result[deskIndex].columns
-    //     , resColumn = resColumns.findIndex(item => item.column_name == columnName)
+}
 
+const deleteTask = (columnName, taskName) => {
+    let transaction = db.transaction("desks", "readwrite")
+        , store = transaction.objectStore("desks")
+        , hash = Number(getWindowHash().slice(1))
+        , getDesk = store.get(hash)
+    getDesk.onsuccess = () => {
+        let result = getDesk.result
+            , columnsArr = result.columns
+            , columnIndex = columnsArr.findIndex(item => item.column_name == columnName)
+            , column = columnsArr[columnIndex]
+            , tasksArr = column.tasks
+            , taskIndex = tasksArr.findIndex(task => task == taskName)
+        // tasksArr.filter((item, index) => index !== taskIndex)
+        result.columns[columnIndex].tasks = result.columns[columnIndex].tasks.filter((item, index) => index !== taskIndex)
+        const putResult = store.put(result)
+        putResult.onsuccess = () => {
+            console.log('Good');
+            router()
+        }
+
+    }
 }
